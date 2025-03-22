@@ -55,6 +55,6 @@ func main() {
 
 	// HTTPハンドラーを設定し、Prometheusのエクスポートエンドポイントを提供します。
 	http.Handle("/metrics", promhttp.Handler())
-	log.Println("Exporter is listening on :9090")
-	log.Fatal(http.ListenAndServe(":9090", nil))
+	log.Println("Exporter is listening on :9091")
+	log.Fatal(http.ListenAndServe(":9091", nil))
 }

@@ -4,4 +4,4 @@ global:
 scrape_configs:
   - job_name: "ssh_exporter"
     static_configs:
-      - targets: ["http://localhost:9090"]
+      - targets: ["http://localhost:9091"]
