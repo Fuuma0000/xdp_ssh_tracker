@@ -63,11 +63,13 @@ int xdp_ssh_alert(struct xdp_md *ctx) {
     if (tcp->syn && !tcp->ack) {
         update_counter(ip->saddr, 1);
         bpf_printk("SSH connection from %x detected\n", ip->saddr);
+        return XDP_TX;
     }
     // FINまたはRSTで接続終了を判定
     else if (tcp->fin || tcp->rst) {
         update_counter(ip->saddr, -1);
         bpf_printk("SSH connection termination from %x detected\n", ip->saddr);
+        return XDP_TX;
     }
     return XDP_PASS;
 }
